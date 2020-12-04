@@ -19,16 +19,20 @@ void pretty_print(int tokens);
 
 
 %%
-[ \t\r\f]               {   ;   }
-[\n]                    {   lines++;    }
-[\+\-\*\/\<\>\=\#]      {   fout << "Found an operator: " << yytext << endl;    }
+[ \t\r\f]                           {   ;   }
+[\n]                                {   lines++;    }
+%+.*                                {   ;   }
+[\+\-\*\/\<\>\=\#]                  {   fout << "Found an operator: " << yytext << endl;    }
+[0-9A-F][0-9A-F]X                   {   fout << "Found Char Literal: " << yytext << endl;   }
+(WHILE|ELSE|IF|PRINT)               {   fout << "Found Keyword: " << yytext << endl;    }
+[+|-]?[0-9]+                        {   fout << "Found an integer: " << yytext << endl; }
+[+|-]?[0-9]+\.[0-9]+                {   fout << "Found a decimal number: " << yytext << endl;    }
+[+|-]?[0-9]+\.[0-9]+E[+|-]?[0-9]+   {   fout << "Found a scientific number: " << yytext << endl;    }
+[0-9A-F]+H                          {   fout << "Found a hex number: " << yytext << endl;   }
+[0|1]+B                             {   fout << "Found a binary number: " << yytext << endl;    }
+\"[^ \n\t\r]*\"                     {   fout << "Found a string: " << yytext << endl;   }
 
-
-%+.*                    {   ;   }
-[0-9]+\.[0-9]+          {   fout << "Found a floating-point number: " << yytext << endl;    }
-[0-9]+                  {   fout << "Found an integer: " << yytext << endl; }
-[a-zA-Z0-9]+            {   fout << "Found a string: " << yytext << endl;   }
-.                       {   fout << "?: " << yytext << endl;}
+.                                   {   fout << "?: " << yytext << endl;}
 %%
 
 void pretty_print(int tokens)

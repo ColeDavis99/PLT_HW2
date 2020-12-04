@@ -1,6 +1,36 @@
-Found a string: wub
-Found an operator: +
-Found a string: cat
 Found an integer: 4
+Found an integer: +4
+Found Char Literal: F0X
+Found Keyword: WHILE
+Found a string: "ELSE.IF-44X_"cat""
+Found an integer: 44
 Found an operator: +
-3 lines processed.
+Found an integer: -44
+Found an integer: -23
+?: X
+Found a decimal number: 44.4
+Found a decimal number: -33.3452
+Found a decimal number: +45230957423.2543504372
+Found a scientific number: +45230957423.254350437E2
+Found a scientific number: -45230957423.254350437E-2
+Found a decimal number: -3.2
+?: E
+Found a hex number: 1H
+Found a hex number: 2H
+Found a hex number: 234509H
+Found a hex number: 234509FABCDEH
+Found a string: "H"
+Found a hex number: 0H
+Found a binary number: 0B
+Found a binary number: 1B
+Found a binary number: 01010010010110101000010101010101010B
+Found a string: ""
+Found a string: "d"
+Found a string: "cat"
+Found a string: "cat932490237485"
+Found a string: "wub69"
+?: "
+?: d
+?: "
+Found a string: "cat"
+31 lines processed.

@@ -1,2 +1,6 @@
-#0:	TOKEN:
-Found a string: hey
+Found a string: wub
+Found an operator: +
+Found a string: cat
+Found an integer: 4
+Found an operator: +
+3 lines processed.

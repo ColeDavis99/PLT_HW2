@@ -19,12 +19,16 @@ void pretty_print(int tokens);
 
 
 %%
-[ \t\n]         ;
-[%.*]           {   lines++;    pretty_print(tokens);   }
-[0-9]+\.[0-9]+  {   fout << "Found a floating-point number: " << yytext << endl;    }
-[0-9]+          {   fout << "Found an integer: " << yytext << endl; }
-[a-zA-Z0-9]+    {   fout << "Found a string: " << yytext << endl;   }
-.               {   fout << "?: " << yytext << endl;}
+[ \t\r\f]               {   ;   }
+[\n]                    {   lines++;    }
+[\+\-\*\/\<\>\=\#]      {   fout << "Found an operator: " << yytext << endl;    }
+
+
+%+.*                    {   ;   }
+[0-9]+\.[0-9]+          {   fout << "Found a floating-point number: " << yytext << endl;    }
+[0-9]+                  {   fout << "Found an integer: " << yytext << endl; }
+[a-zA-Z0-9]+            {   fout << "Found a string: " << yytext << endl;   }
+.                       {   fout << "?: " << yytext << endl;}
 %%
 
 void pretty_print(int tokens)
@@ -36,6 +40,8 @@ int main()
 {
     fout.open("testOutput");
     yylex();
+
+    fout << lines << " lines processed."<<endl;
     fout.close();
 
     return 0;

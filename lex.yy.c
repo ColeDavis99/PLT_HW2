@@ -787,28 +787,28 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 22 "mylexer.l"
-{   ;   }
+{   ;                                                                                       }
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
 #line 23 "mylexer.l"
-{   lines++;    }
+{   lines++;                                                                                }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 24 "mylexer.l"
-{   ;   }
+{   ;                                                                                       }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 25 "mylexer.l"
-{   pretty_print(tokens);   fout << "OPERATOR   LEXEME: " << yytext << endl; tokens++;    }
+{   pretty_print(tokens);   fout << "OPERATOR   LEXEME: " << yytext << endl;    tokens++;   }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 26 "mylexer.l"
-{   pretty_print(tokens);   fout << "CHCONST    LEXEME: " << yytext << endl;  tokens++;}
+{   pretty_print(tokens);   fout << "CHCONST    LEXEME: " << yytext << endl;    tokens++;   }  
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
@@ -818,12 +818,12 @@ YY_RULE_SETUP
 case 7:
 YY_RULE_SETUP
 #line 28 "mylexer.l"
-{   pretty_print(tokens);   fout << "INTCONST   LEXEME: " << yytext << endl; tokens++;   }
+{   pretty_print(tokens);   fout << "INTCONST   LEXEME: " << yytext << endl;    tokens++;   }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 29 "mylexer.l"
-{   pretty_print(tokens);   fout << "DECCONST   LEXEME: " << yytext << endl;   tokens++;   }
+{   pretty_print(tokens);   fout << "DECCONST   LEXEME: " << yytext << endl;    tokens++;   }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
@@ -833,7 +833,7 @@ YY_RULE_SETUP
 case 10:
 YY_RULE_SETUP
 #line 31 "mylexer.l"
-{   pretty_print(tokens);   fout << "HEXCONST   LEXEME: " << yytext << endl;   tokens++;   }
+{   pretty_print(tokens);   fout << "HEXCONST   LEXEME: " << yytext << endl;    tokens++;   }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
@@ -843,17 +843,17 @@ YY_RULE_SETUP
 case 12:
 YY_RULE_SETUP
 #line 33 "mylexer.l"
-{   pretty_print(tokens);   fout << "STRCONST   LEXEME: " << yytext << endl;   tokens++;   }
+{   pretty_print(tokens);   fout << "STRCONST   LEXEME: " << yytext << endl;    tokens++;   }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 34 "mylexer.l"
-{   pretty_print(tokens); fout << "IDENT      LEXEME: " << yytext << endl;  tokens++;   }
+{   pretty_print(tokens);   fout << "IDENT      LEXEME: " << yytext << endl;    tokens++;   }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 35 "mylexer.l"
-{   pretty_print(tokens); fout << "?          LEXEME: " << yytext << endl;    tokens++;   }
+{   pretty_print(tokens);   fout << "?          LEXEME: " << yytext << endl;    tokens++;   }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP

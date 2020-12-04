@@ -22,22 +22,22 @@ void pretty_print(int tokens);
 [ \t\r\f]                           {   ;   }
 [\n]                                {   lines++;    }
 %+.*                                {   ;   }
-[\+\-\*\/\<\>\=\#]                  {   fout << "Found an operator: " << yytext << endl;    }
-[0-9A-F][0-9A-F]X                   {   fout << "Found Char Literal: " << yytext << endl;   }
-(WHILE|ELSE|IF|PRINT)               {   fout << "Found Keyword: " << yytext << endl;    }
-[+|-]?[0-9]+                        {   fout << "Found an integer: " << yytext << endl; }
-[+|-]?[0-9]+\.[0-9]+                {   fout << "Found a decimal number: " << yytext << endl;    }
-[+|-]?[0-9]+\.[0-9]+E[+|-]?[0-9]+   {   fout << "Found a scientific number: " << yytext << endl;    }
-[0-9A-F]+H                          {   fout << "Found a hex number: " << yytext << endl;   }
-[0|1]+B                             {   fout << "Found a binary number: " << yytext << endl;    }
-\"[^ \n\t\r]*\"                     {   fout << "Found a string: " << yytext << endl;   }
-
-.                                   {   fout << "?: " << yytext << endl;}
+[\+\-\*\/\<\>\=\#]                  {   pretty_print(tokens);   fout << "OPERATOR   LEXEME: " << yytext << endl; tokens++;    }
+[0-9A-F][0-9A-F]X                   {   pretty_print(tokens);   fout << "CHCONST    LEXEME: " << yytext << endl;  tokens++;}
+(WHILE|ELSE|IF|PRINT)               {   pretty_print(tokens);   fout << "KEYWORD    LEXEME: " << yytext << endl;    tokens++;   }
+[+|-]?[0-9]+                        {   pretty_print(tokens);   fout << "INTCONST   LEXEME: " << yytext << endl; tokens++;   }
+[+|-]?[0-9]+\.[0-9]+                {   pretty_print(tokens);   fout << "DECCONST   LEXEME: " << yytext << endl;   tokens++;   }
+[+|-]?[0-9]+\.[0-9]+E[+|-]?[0-9]+   {   pretty_print(tokens);   fout << "SCICONST   LEXEME: " << yytext << endl;    tokens++;   }
+[0-9A-F]+H                          {   pretty_print(tokens);   fout << "HEXCONST   LEXEME: " << yytext << endl;   tokens++;   }
+[0|1]+B                             {   pretty_print(tokens);   fout << "BINCONST   LEXEME: " << yytext << endl;    tokens++;   }
+\"[^ \n\t\r]*\"                     {   pretty_print(tokens);   fout << "STRCONST   LEXEME: " << yytext << endl;   tokens++;   }
+[A-Za-z][^ \n\t\r\"]*               {   pretty_print(tokens); fout << "IDENT      LEXEME: " << yytext << endl;  tokens++;   }
+.                                   {   pretty_print(tokens); fout << "?          LEXEME: " << yytext << endl;    tokens++;   }
 %%
 
 void pretty_print(int tokens)
 {
-    fout << "#" << tokens << ":\tTOKEN:"<<endl;
+    fout << "#" << tokens << ": TOKEN: ";
 }
 
 int main()
@@ -45,7 +45,7 @@ int main()
     fout.open("testOutput");
     yylex();
 
-    fout << lines << " lines processed."<<endl;
+    fout << lines << " lines processed.";
     fout.close();
 
     return 0;
